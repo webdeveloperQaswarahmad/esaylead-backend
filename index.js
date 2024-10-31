@@ -5,9 +5,8 @@ import express from "express";
 import morgan from "morgan";
 import { errorHandler, routeNotFound } from "./middlewares/errorMiddlewaves.js";
 import { dbConnection } from "./utils/index.js";
-import routes from "./routes/index.js"
+import routes from "./routes/index.js";
 dotenv.config();
-
 
 dbConnection();
 
@@ -23,8 +22,8 @@ app.use(
   })
 );
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "10mb" })); // Adjust limit as needed
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 app.use(cookieParser());
 
