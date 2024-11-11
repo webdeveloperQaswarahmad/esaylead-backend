@@ -104,6 +104,10 @@ export const postTaskActivity = async (req, res) => {
 
     const task = await Task.findById(id);
 
+    if (!task) {
+      return res.status(404).json({ message: "Task not found" });
+    }
+
     const data = {
       type,
       activity,
