@@ -9,7 +9,7 @@ import routes from "./routes/index.js";
 dotenv.config();
 
 dbConnection();
-
+const router = express.Router();
 const PORT = process.env.PORT || 5000;
 
 const app = express();
@@ -30,6 +30,11 @@ app.use(cookieParser());
 app.use(morgan("dev"));
 
 app.use("/api", routes);
+
+app.get("/", (req, res) => {
+  res.json({ message: "App is working!" });
+});
+
 
 app.use(routeNotFound);
 app.use(errorHandler);
