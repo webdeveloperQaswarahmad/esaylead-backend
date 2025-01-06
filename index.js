@@ -14,11 +14,21 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       callback(null, true); 
+//     },
+//     methods: ["GET", "POST", "DELETE", "PUT"],
+//     credentials: true,
+//   })
+// );
 app.use(
   cors({
-    origin: (origin, callback) => {
-      callback(null, true); 
-    },
+    origin:
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000"
+        : "https://esaylead-backend-production.up.railway.app",
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
