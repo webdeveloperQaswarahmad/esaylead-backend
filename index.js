@@ -27,7 +27,7 @@ app.use(
   cors({
     origin:
       process.env.NODE_ENV === "development"
-        ? "http://localhost:3000"
+        ? "https://resonant-queijadas-74315c.netlify.app"
         : "https://esaylead-backend-production.up.railway.app",
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
