@@ -6,7 +6,7 @@ export const dbConnection = async () => {
     await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      serverSelectionTimeoutMS: 5000, // Timeout after 5 seconds if no server is found
+      serverSelectionTimeoutMS: 10000, // Timeout after 5 seconds if no server is found
       socketTimeoutMS: 45000, // Timeout for socket operations
     });
     console.log("DB connection established");
