@@ -3,13 +3,18 @@ import jwt from "jsonwebtoken";
 
 export const dbConnection = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
-
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 5000, // Timeout after 5 seconds if no server is found
+      socketTimeoutMS: 45000, // Timeout for socket operations
+    });
     console.log("DB connection established");
   } catch (error) {
     console.log("DB Error: " + error);
   }
 };
+
 
 export const createJWT = (res, userId) => {
   const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
