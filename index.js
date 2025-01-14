@@ -21,17 +21,31 @@ const allowedOrigins = [
   "https://resonant-queijadas-74315c.netlify.app",
   "https://esaylead-backend-production.up.railway.app",
 ];
+
 const corsOptions = {
   origin: (origin, callback) => {
-    console.log("origin",origin)
+    console.log("Origin:", origin);
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true); // Allow the request
     } else {
       callback(new Error("Not allowed by CORS")); // Reject the request
     }
   },
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"], // Allowed HTTP methods
+  allowedHeaders: [
+    "Content-Type",
+    "Origin",
+    "X-Requested-With",
+    "Accept",
+    "x-client-key",
+    "x-client-token",
+    "x-client-secret",
+    "Authorization",
+  ], // Allowed headers
   credentials: true, // Allow cookies and authorization headers
 };
+
+app.use(cors(corsOptions));
 
 // Apply CORS middleware
 app.use(cors(corsOptions));
