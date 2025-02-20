@@ -21,7 +21,7 @@ export const dbConnection = async () => {
     console.log("DB Error: " + error);
   }
 };
-JWT_SECRET = "3ebd6f37abfbaf69e1eeece3e78046f21aed88afb8028d99f2057b2137a0d33a";
+var JWT_SECRET="3ebd6f37abfbaf69e1eeece3e78046f21aed88afb8028d99f2057b2137a0d33a";
 export const createJWT = (res, userId) => {
   const token = jwt.sign({ userId }, JWT_SECRET, {
     expiresIn: "1d",
