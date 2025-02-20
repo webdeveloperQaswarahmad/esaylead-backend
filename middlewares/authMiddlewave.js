@@ -10,9 +10,10 @@ const protectRoute = async (req, res, next) => {
         .status(401)
         .json({ status: false, message: "Not authorized." });
     }
-
+    JWT_SECRET="3ebd6f37abfbaf69e1eeece3e78046f21aed88afb8028d99f2057b2137a0d33a";
+    
     if (token) {
-      const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+      const decodedToken = jwt.verify(token, JWT_SECRET);
       console.log("Decoded Token:", decodedToken); // Debugging log
 
       const resp = await User.findById(decodedToken.userId).select(
