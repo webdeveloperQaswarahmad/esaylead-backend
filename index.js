@@ -24,28 +24,17 @@ const allowedOrigins = [
 
 const corsOptions = {
   origin: (origin, callback) => {
-    console.log("Origin:", origin);
+    console.log("Incoming Origin:", origin); // Debug origin
     if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true); // Allow the request
+      callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS")); // Reject the request
+      callback(new Error("Not allowed by CORS"));
     }
   },
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"], // Allowed HTTP methods
-  allowedHeaders: [
-    "Content-Type",
-    "Origin",
-    "X-Requested-With",
-    "Accept",
-    "x-client-key",
-    "x-client-token",
-    "x-client-secret",
-    "Authorization",
-  ], // Allowed headers
-  credentials: true, // Allow cookies and authorization headers
+  credentials: true,
 };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // Apply CORS middleware
 app.use(cors(corsOptions));

@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 
-
 export const dbConnection = async () => {
   try {
     const uri = process.env.MONGODB_URI; // Your MongoDB connection string
@@ -32,7 +31,7 @@ export const createJWT = (res, userId) => {
   res.cookie("token", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production", // Ensures cookies are secure in production
-    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // SameSite set to "None" in production
+    sameSite: "None",
     maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
   });
 };
