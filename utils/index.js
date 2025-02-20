@@ -12,8 +12,6 @@ export const dbConnection = async () => {
 
     // Connect to MongoDB using Mongoose
     await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
       serverSelectionTimeoutMS: 10000, // Timeout after 10 seconds if no server is found
       socketTimeoutMS: 45000, // Timeout for socket operations
     });
