@@ -3,7 +3,8 @@ import jwt from "jsonwebtoken";
 
 export const dbConnection = async () => {
   try {
-    const uri = process.env.MONGODB_URI; // Your MongoDB connection string
+    const uri =
+      "mongodb+srv://qaswarahmad:ahmad123@task-manager-cluster.pdlkc.mongodb.net/?retryWrites=true&w=majority&appName=task-manager-cluster";
 
     if (!uri) {
       throw new Error("MongoDB URI is not defined!");
